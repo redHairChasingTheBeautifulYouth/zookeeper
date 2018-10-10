@@ -23,5 +23,8 @@
     <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.curator:curator-framework:2.4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.curator:curator-client:2.4.2" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:14.0.1" level="project" />
   </component>
 </module>
