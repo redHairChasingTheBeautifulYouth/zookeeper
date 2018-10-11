@@ -11,4 +11,6 @@ public class Constant {
 
     public static int sessionTimeOut = 5000;
 
+    public static int connectionTimeoutMs = 3000;
+
 }
