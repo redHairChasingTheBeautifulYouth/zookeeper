@@ -9,12 +9,15 @@ import common.Constant;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.recipes.atomic.AtomicValue;
+import org.apache.curator.framework.recipes.atomic.DistributedAtomicInteger;
 import org.apache.curator.framework.recipes.cache.*;
 import org.apache.curator.framework.recipes.leader.LeaderSelector;
 import org.apache.curator.framework.recipes.leader.LeaderSelectorListenerAdapter;
 import org.apache.curator.framework.recipes.locks.InterProcessMultiLock;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.curator.retry.RetryNTimes;
 import org.apache.zookeeper.CreateMode;
 import org.junit.jupiter.api.Test;
 
@@ -131,6 +134,17 @@ public class UseExample {
             }).start();
         }
         down.countDown();
+    }
+
+    /**
+     * 分布式计数器
+     * @throws Exception
+     */
+    public void atommicInt() throws Exception {
+        client.start();
+        DistributedAtomicInteger atomicInteger = new DistributedAtomicInteger(client ,path ,new RetryNTimes(3 ,1000));
+        AtomicValue<Integer> rc = atomicInteger.add(8);
+        System.out.println(rc.succeeded());
     }
 
 
