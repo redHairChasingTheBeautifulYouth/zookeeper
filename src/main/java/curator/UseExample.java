@@ -11,6 +11,7 @@ import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.atomic.AtomicValue;
 import org.apache.curator.framework.recipes.atomic.DistributedAtomicInteger;
+import org.apache.curator.framework.recipes.barriers.DistributedBarrier;
 import org.apache.curator.framework.recipes.cache.*;
 import org.apache.curator.framework.recipes.leader.LeaderSelector;
 import org.apache.curator.framework.recipes.leader.LeaderSelectorListenerAdapter;
@@ -24,10 +25,14 @@ import org.junit.jupiter.api.Test;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class UseExample {
 
     private static String path = "/book";
+
+    static DistributedBarrier barrier;
 
     private static RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000 ,3);
 
@@ -35,6 +40,7 @@ public class UseExample {
             .sessionTimeoutMs(Constant.sessionTimeOut)
             .retryPolicy(retryPolicy)
             .build();
+
 
     /**
      * NodeCache用于监听zookeeper数据节点本生的变化
@@ -147,5 +153,26 @@ public class UseExample {
         System.out.println(rc.succeeded());
     }
 
+    public void barrier() throws Exception {
+        for (int i=0;i<5;i++) {
+            new Thread(new Runnable() {
+                public void run() {
+                    client.start();
+                    barrier = new DistributedBarrier(client ,path);
+                    System.out.println(Thread.currentThread().getName() + "号barrier设置");
+                    try {
+                        barrier.setBarrier();
+                        barrier.waitOnBarrier();
+                        System.out.println("启动。。。");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+        }
+        Thread.sleep(2000);
+        barrier.removeBarrier();
+    }
 
 }
