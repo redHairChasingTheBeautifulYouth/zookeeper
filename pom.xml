@@ -6,7 +6,16 @@
 
     <groupId>zookeeper</groupId>
     <artifactId>zookeeper</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>dubbo-user</module>
+        <module>dubbo-order</module>
+        <module>dubbo-api</module>
+        <module>dubbo-provider</module>
+        <module>dubbo-provider</module>
+        <module>dubbo-api</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -41,6 +50,16 @@
         </dependency>
 
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>zookeeper</groupId>
+                <artifactId>dubbo-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
 </project>
