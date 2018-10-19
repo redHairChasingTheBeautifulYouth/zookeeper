@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="dubbo-api" />
-        <module name="dubbo-order" />
         <module name="dubbo-provider" />
         <module name="dubbo-user" />
       </profile>
