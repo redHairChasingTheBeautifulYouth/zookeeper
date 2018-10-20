@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/dubbo-api/dubbo-api.iml" filepath="$PROJECT_DIR$/dubbo-api/dubbo-api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dubbo-provider/dubbo-provider.iml" filepath="$PROJECT_DIR$/dubbo-provider/dubbo-provider.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dubbo-user/dubbo-user.iml" filepath="$PROJECT_DIR$/dubbo-user/dubbo-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo_api/dubbo_api.iml" filepath="$PROJECT_DIR$/dubbo_api/dubbo_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo_provider/dubbo_provider.iml" filepath="$PROJECT_DIR$/dubbo_provider/dubbo_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo_user/dubbo_user.iml" filepath="$PROJECT_DIR$/dubbo_user/dubbo_user.iml" />
       <module fileurl="file://$PROJECT_DIR$/zookeeper.iml" filepath="$PROJECT_DIR$/zookeeper.iml" />
     </modules>
   </component>
