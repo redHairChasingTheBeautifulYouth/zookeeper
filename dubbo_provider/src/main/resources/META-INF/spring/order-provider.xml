@@ -16,7 +16,10 @@
     <dubbo:protocol name="dubbo" port="20880"/>
 
     <!--服务发布的配置，需要暴露的服务接口-->
-    <dubbo:service interface="api.IOrderServices" ref="orderService"/>
+    <dubbo:service interface="api.IOrderServices" ref="orderService" protocol="dubbo" version="1.0"/>
+
+    <!--多版本支持-->
+    <dubbo:service interface="api.IOrderServices" ref="orderService2" protocol="dubbo" version="2.0"/>
 
     <!--Bean bean定义-->
     <bean id="orderService" class="provider.OrderServiceImpl"/>
