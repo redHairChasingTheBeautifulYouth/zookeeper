@@ -9,8 +9,8 @@
     <!--  -->
     <dubbo:monitor protocol="registry"/>
 
-    <!--dubbo这个服务所要暴露的服务地址所对应的注册中心 ,点对点address配N/A-->
-    <dubbo:registry  address="192.168.11.129:2181,192.168.11.137:2181,192.168.11.138:2181,192.168.11.139:2181"/>
+    <!--dubbo这个服务所要暴露的服务地址所对应的注册中心 ,点对点address配N/A   register表示只注册到注册中心，不提供服务，只能调用服务-->
+    <dubbo:registry  address="192.168.11.129:2181,192.168.11.137:2181,192.168.11.138:2181,192.168.11.139:2181" register="false"/>
 
     <!--当前服务发布所依赖的协议；webserovice、Thrift、Hessain、http-->
     <dubbo:protocol name="dubbo" port="20880"/>
